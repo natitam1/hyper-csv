@@ -3,39 +3,16 @@ import React from "react";
 const Navbar = () => {
   return (
     <div>
-      <nav className="h-[70px] relative w-full px-6 md:px-16 lg:px-24 xl:px-32 flex items-center justify-between z-20 bg-white text-gray-700 transition-all">
-        <a href="#" className="font-extrabold text-3xl">
+      <nav className="h-[70px] relative w-full px-6 md:px-16 lg:px-24 xl:px-42 flex items-center justify-between z-20 bg-white text-gray-700 transition-all">
+        <a href="#" className="text-black font-extrabold text-3xl">
           Hyper
         </a>
 
-        <ul className="md:flex hidden items-center gap-10">
-          <li>
-            <a className="hover:text-gray-500/80 transition" href="#">
-              Home
-            </a>
-          </li>
-          <li>
-            <a className="hover:text-gray-500/80 transition" href="#">
-              Services
-            </a>
-          </li>
-          <li>
-            <a className="hover:text-gray-500/80 transition" href="#">
-              Portfolio
-            </a>
-          </li>
-          <li>
-            <a className="hover:text-gray-500/80 transition" href="#">
-              Pricing
-            </a>
-          </li>
-        </ul>
-
         <button
           type="button"
-          className="bg-white text-gray-600 border cursor-pointer border-gray-300 md:inline hidden text-sm hover:bg-gray-50 active:scale-95 transition-all w-40 h-11 rounded-full"
+          className="w-30 py-2 active:scale-95 cursor-pointer hover:bg-gray-800 font-bold transition text-sm text-white rounded-full bg-black"
         >
-          Get started
+          <p className="mb-0.5">Get started</p>
         </button>
 
         <button
