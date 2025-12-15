@@ -1,2 +1,9 @@
-/node_modules
+node_modules/
+dist/
+uploads/
+processed/
 .env
+*.log
+.DS_Store
+coverage/
+*.csv
