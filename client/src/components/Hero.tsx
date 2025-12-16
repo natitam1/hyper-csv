@@ -71,12 +71,12 @@ const Hero = () => {
   return (
     <section className="relative flex flex-col items-center bg-white text-black min-h-screen pb-20 px-4">
       <h1 className="text-4xl md:text-6xl text-center font-extrabold max-w-4xl mt-40 tracking-tight">
-        Fullstack Developer Test
+        Effortless CSV Processing for Your Business
       </h1>
 
       <p className="text-gray-600 md:text-lg text-center max-w-xl mt-4">
-        Upload large CSV files, process sales data efficiently, and download
-        aggregated results — built for performance and scalability.
+        Upload large CSV files, aggregate departmental sales, and download
+        results instantly – all in one seamless app.
       </p>
 
       <input
