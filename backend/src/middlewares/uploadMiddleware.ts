@@ -1,11 +1,17 @@
 import multer from "multer";
 import path from "path";
 import fs from "fs";
+import { fileURLToPath } from "url";
+
+// Get current directory in ES module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const uploadFolder = path.join(__dirname, "../../uploads");
 
-// ensure uploads folder exists
-if (!fs.existsSync(uploadFolder)) fs.mkdirSync(uploadFolder);
+// Ensure uploads folder exists
+if (!fs.existsSync(uploadFolder))
+  fs.mkdirSync(uploadFolder, { recursive: true });
 
 const storage = multer.diskStorage({
   destination: (_req, _file, cb) => {
