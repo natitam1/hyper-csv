@@ -48,7 +48,7 @@ Hyper-CSV is a fullstack application for processing large CSV files with departm
 
 ## Live Preview
 
-![Live Preview](https://hyper-csv.vercel.app/)
+![Live Preview](client/src/assets/screen.png)
 
 ````
 
