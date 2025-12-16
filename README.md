@@ -31,22 +31,18 @@ Hyper-CSV is a fullstack application for processing large CSV files with departm
 
 ### Input CSV
 
-Department Name,Date,Number of Sales
-Electronics,2023-08-01,100
-Clothing,2023-08-01,200
-Electronics,2023-08-02,150
-
-shell
-Copy code
+| Department Name | Date       | Number of Sales |
+| --------------- | ---------- | --------------- |
+| Electronics     | 2023-08-01 | 100             |
+| Clothing        | 2023-08-01 | 200             |
+| Electronics     | 2023-08-02 | 150             |
 
 ### Output CSV
 
-Department Name,Total Number of Sales
-Electronics,250
-Clothing,200
-
-yaml
-Copy code
+| Department Name | Total Number of Sales |
+| --------------- | --------------------- |
+| Electronics     | 250                   |
+| Clothing        | 200                   |
 
 ---
 
@@ -58,17 +54,16 @@ _This is a placeholder screenshot of the frontend UI. It shows the file upload b
 
 ASCII representation of the UI:
 
+```
 +----------------------------------------------+
-| Upload CSV |
-| [Choose File] [Upload] |
-| |
-| Processing: ████████ 50% |
-| |
-| [Download Processed CSV] |
+| Upload CSV                                   |
+| [Choose File] [Upload]                       |
+|                                              |
+| Processing: ████████ 50%                     |
+|                                              |
+| [Download Processed CSV]                     |
 +----------------------------------------------+
-
-yaml
-Copy code
+```
 
 ---
 
@@ -80,10 +75,11 @@ Copy code
 cd backend
 npm install
 npm run dev
-Frontend
-bash
-Copy code
+```
+
+### Frontend
+
+```bash
 cd frontend
-npm install
-npm run dev
+npm inst
 ```
