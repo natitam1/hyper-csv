@@ -1,17 +1,14 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Hyper-CSV Backend",
+  "main": "dist/server.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon --watch src --ext ts --exec \"node -r ts-node/register\" src/server.ts",
+    "dev": "ts-node-esm src/server.ts",
     "build": "tsc",
-    "start": "node dist/app.js"
+    "start": "node dist/server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "cors": "^2.8.5",
     "csv-parser": "^3.2.0",
@@ -19,20 +16,14 @@
     "express": "^5.2.1",
     "fs-extra": "^11.3.2",
     "multer": "^2.0.2",
-    "nodemon": "^3.1.11",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.3",
     "uuid": "^13.0.0"
   },
   "devDependencies": {
+    "typescript": "^5.9.3",
+    "ts-node": "^10.9.2",
+    "@types/node": "^25.0.2",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
-    "@types/jest": "^30.0.0",
-    "@types/multer": "^2.0.0",
-    "@types/node": "^25.0.2",
-    "@types/supertest": "^6.0.3",
-    "jest": "^30.2.0",
-    "supertest": "^7.1.4",
-    "ts-jest": "^29.4.6"
+    "@types/multer": "^2.0.0"
   }
 }
