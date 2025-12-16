@@ -69,6 +69,6 @@ npm run dev
 ### Frontend
 
 ```bash
-cd cient
+cd client
 npm inst
 ```
