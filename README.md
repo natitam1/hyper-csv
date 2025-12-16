@@ -1,8 +1,8 @@
-# Fullstack Developer Test (Node.js + React)
+# Hyper-CSV (Node.js + React)
 
 ## Overview
 
-This project is a fullstack application for processing large CSV files with departmental sales data. Users can upload a CSV, the backend aggregates total sales per department, and returns a downloadable CSV result. The frontend allows uploading, tracks progress, and enables file download.
+Hyper-CSV is a fullstack application for processing large CSV files with departmental sales data. Users can upload a CSV, the backend aggregates total sales per department, and returns a downloadable CSV result. The frontend allows uploading, tracks progress, and enables file download.
 
 ---
 
@@ -29,9 +29,61 @@ This project is a fullstack application for processing large CSV files with depa
 
 ## Example
 
+### Input CSV
+
 Department Name,Date,Number of Sales
 Electronics,2023-08-01,100
 Clothing,2023-08-01,200
 Electronics,2023-08-02,150
 
-### Input CSV
+shell
+Copy code
+
+### Output CSV
+
+Department Name,Total Number of Sales
+Electronics,250
+Clothing,200
+
+yaml
+Copy code
+
+---
+
+## Live Preview
+
+![Live Preview](https://via.placeholder.com/600x300?text=Hyper-CSV+Live+Preview)
+
+_This is a placeholder screenshot of the frontend UI. It shows the file upload button, progress bar, and download link for the processed CSV. Replace it with an actual screenshot if available._
+
+ASCII representation of the UI:
+
++----------------------------------------------+
+| Upload CSV |
+| [Choose File] [Upload] |
+| |
+| Processing: ████████ 50% |
+| |
+| [Download Processed CSV] |
++----------------------------------------------+
+
+yaml
+Copy code
+
+---
+
+## Installation
+
+### Backend
+
+```bash
+cd backend
+npm install
+npm run dev
+Frontend
+bash
+Copy code
+cd frontend
+npm install
+npm run dev
+```
