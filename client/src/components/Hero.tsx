@@ -1,6 +1,75 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import axios from "axios";
 
 const Hero = () => {
+  const fileInputRef = useRef(null);
+
+  const [uploading, setUploading] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [downloadLink, setDownloadLink] = useState(null);
+  const [error, setError] = useState(null);
+
+  const handleUploadClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    setUploading(true);
+    setProgress(0);
+    setDownloadLink(null);
+    setError(null);
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/csv/upload",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          onUploadProgress: (event) => {
+            if (!event.total) return;
+            const percent = Math.round((event.loaded * 100) / event.total);
+            setProgress(percent);
+          },
+        }
+      );
+
+      setDownloadLink(res.data.downloadLink);
+    } catch (err) {
+      setError("Failed to upload or process CSV");
+    } finally {
+      setUploading(false);
+      e.target.value = ""; // reset input
+    }
+  };
+
+  const handleDownload = async () => {
+    if (!downloadLink) return;
+
+    const response = await axios.get(`http://localhost:5000${downloadLink}`, {
+      responseType: "blob",
+    });
+
+    const blob = new Blob([response.data], { type: "text/csv" });
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "result.csv";
+    document.body.appendChild(a);
+    a.click();
+
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+  };
+
   return (
     <section className="relative flex flex-col items-center bg-white text-black min-h-screen pb-20 px-4">
       {/* Hero Text */}
@@ -13,10 +82,23 @@ const Hero = () => {
         aggregated results — built for performance and scalability.
       </p>
 
+      {/* Hidden File Input */}
+      <input
+        type="file"
+        accept=".csv"
+        ref={fileInputRef}
+        onChange={handleFileChange}
+        className="hidden"
+      />
+
       {/* CTA */}
-      <div className="flex items-center gap-3 mt-10">
-        <button className="flex items-center gap-2 px-8 py-4 bg-black text-white rounded-full hover:bg-gray-900 transition font-medium">
-          <span>Upload CSV</span>
+      <div className="flex flex-col items-center gap-4 mt-10">
+        <button
+          onClick={handleUploadClick}
+          disabled={uploading}
+          className="flex items-center gap-2 px-8 py-4 bg-black text-white rounded-full hover:bg-gray-900 transition font-medium disabled:opacity-60"
+        >
+          <span>{uploading ? "Uploading..." : "Upload CSV"}</span>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
             <path
               d="M5 12H19M19 12L12 5M19 12L12 19"
@@ -27,6 +109,24 @@ const Hero = () => {
             />
           </svg>
         </button>
+
+        {/* Progress */}
+        {uploading && (
+          <p className="text-sm text-gray-600">Upload progress: {progress}%</p>
+        )}
+
+        {/* Download */}
+        {downloadLink && (
+          <button
+            onClick={handleDownload}
+            className="text-sm font-medium text-blue-600 underline"
+          >
+            Download processed CSV
+          </button>
+        )}
+
+        {/* Error */}
+        {error && <p className="text-sm text-red-600">{error}</p>}
       </div>
 
       {/* Trusted By */}
