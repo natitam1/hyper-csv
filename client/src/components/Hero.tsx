@@ -1,20 +1,20 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import axios from "axios";
 
 const Hero = () => {
-  const fileInputRef = useRef(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [downloadLink, setDownloadLink] = useState(null);
-  const [error, setError] = useState(null);
+  const [downloadLink, setDownloadLink] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleUploadClick = () => {
-    fileInputRef.current.click();
+    fileInputRef.current?.click();
   };
 
-  const handleFileChange = async (e) => {
-    const file = e.target.files[0];
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     if (!file) return;
 
     setUploading(true);
@@ -30,9 +30,7 @@ const Hero = () => {
         "http://localhost:5000/api/csv/upload",
         formData,
         {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+          headers: { "Content-Type": "multipart/form-data" },
           onUploadProgress: (event) => {
             if (!event.total) return;
             const percent = Math.round((event.loaded * 100) / event.total);
@@ -72,7 +70,6 @@ const Hero = () => {
 
   return (
     <section className="relative flex flex-col items-center bg-white text-black min-h-screen pb-20 px-4">
-      {/* Hero Text */}
       <h1 className="text-4xl md:text-6xl text-center font-extrabold max-w-4xl mt-40 tracking-tight">
         Fullstack Developer Test
       </h1>
@@ -82,7 +79,6 @@ const Hero = () => {
         aggregated results — built for performance and scalability.
       </p>
 
-      {/* Hidden File Input */}
       <input
         type="file"
         accept=".csv"
@@ -91,7 +87,6 @@ const Hero = () => {
         className="hidden"
       />
 
-      {/* CTA */}
       <div className="flex flex-col items-center gap-4 mt-10">
         <button
           onClick={handleUploadClick}
@@ -110,12 +105,10 @@ const Hero = () => {
           </svg>
         </button>
 
-        {/* Progress */}
         {uploading && (
           <p className="text-sm text-gray-600">Upload progress: {progress}%</p>
         )}
 
-        {/* Download */}
         {downloadLink && (
           <button
             onClick={handleDownload}
@@ -125,11 +118,9 @@ const Hero = () => {
           </button>
         )}
 
-        {/* Error */}
         {error && <p className="text-sm text-red-600">{error}</p>}
       </div>
 
-      {/* Trusted By */}
       <div className="mt-28 flex flex-col items-center">
         <p className="text-gray-500 text-sm mb-10 uppercase tracking-wide">
           Trusted by developers & teams from
