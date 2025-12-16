@@ -17,7 +17,7 @@
 
     // Node.js Support
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "resolveJsonModule": true,
     "types": ["node"], // Include Node.js types
 
