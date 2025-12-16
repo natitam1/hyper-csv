@@ -48,20 +48,9 @@ Hyper-CSV is a fullstack application for processing large CSV files with departm
 
 ## Live Preview
 
-![Live Preview]("/client/src/assets/screen.png")
+![Live Preview](https://hyper-csv.vercel.app/)
 
-ASCII representation of the UI:
-
-```
-+----------------------------------------------+
-| Upload CSV                                   |
-| [Choose File] [Upload]                       |
-|                                              |
-| Processing: ████████ 50%                     |
-|                                              |
-| [Download Processed CSV]                     |
-+----------------------------------------------+
-```
+````
 
 ---
 
@@ -73,7 +62,7 @@ ASCII representation of the UI:
 cd backend
 npm install
 npm run dev
-```
+````
 
 ### Frontend
 
