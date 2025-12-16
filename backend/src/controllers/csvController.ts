@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { processCSV } from "../services/csvService";
+import { processCSV } from "../services/csvService.js";
 import path from "path";
 
 export const uploadCSV = async (req: Request, res: Response) => {

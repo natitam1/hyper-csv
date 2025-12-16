@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { uploadCSV, downloadCSV } from "../controllers/csvController";
-import { upload } from "../middlewares/uploadMiddleware";
+import { uploadCSV, downloadCSV } from "../controllers/csvController.js";
+import { upload } from "../middlewares/uploadMiddleware.js";
 
 const router = Router();
 
